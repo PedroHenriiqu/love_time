@@ -1,0 +1,169 @@
+body {
+  margin: 0;
+  background-color: #0b1120;
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
+  text-align: center;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;  /* Centraliza horizontalmente */
+  overflow-x: hidden;
+}
+
+#telaPrincipal {
+  display: none;
+  flex-direction: column; /* Alinha os elementos em coluna */
+  align-items: center;     /* Centraliza horizontalmente */
+  justify-content: flex-start; /* Começa do topo */
+  width: 100%;
+  max-width: 650px;        /* ou o tamanho que quiser */
+  margin: 0 auto;
+  padding-top: 20px;
+}
+
+
+    /* Centraliza o botão coração na tela inicial */
+    #telaInicial {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #0b1120;
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    #btnAbrir {
+      font-size: 5rem;
+      cursor: pointer;
+      animation: pulse 1.5s infinite;
+      user-select: none;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); color: red; }
+      50% { transform: scale(1.2); color: #ff3366; }
+      100% { transform: scale(1); color: red; }
+    }
+
+.foto-container {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 20px;
+}
+
+.nome-casal {
+  position: relative;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+  margin-bottom: 25px;
+}
+
+img {
+  width: 80%;
+  max-width: 200px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-bottom: 1px;
+}
+
+h3 {
+  font-size: 1.7rem;
+  margin: 1px 10px;
+}
+
+.timer {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.heart {
+  font-size: 2.5rem;
+  animation: pulse 1s infinite;
+  margin: 15px 0;
+}
+
+.message {
+  font-size: 1.5rem;
+  margin-top: 1px;
+  padding: 0 1px;
+  font-family: 'Lobster', cursive;
+  line-height: 1.6;
+  font-family: 'Dancing Script', cursive;
+  font-weight: normal;
+}
+
+hr {
+  width: 200%;
+  border: 0.5px solid #444;
+  margin: 30px 0;
+}
+
+.coracoes-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Não bloqueia cliques */
+  overflow: hidden;
+  z-index: 1;
+}
+
+.coracao {
+  position: absolute;
+  font-size: 1.5rem;
+  animation: flutuar 4s ease-in-out forwards;
+  color: red;
+  opacity: 0;
+}
+
+@keyframes flutuar {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-100vh) scale(1.5);
+    opacity: 0;
+  }
+}
+
+
+@keyframes pulse {
+  0% { transform: scale(1); color: red; }
+  50% { transform: scale(1.2); color: #ff3366; }
+  100% { transform: scale(1); color: red; }
+}
+
+/* Responsividade extra para telas muito pequenas */
+@media (max-width: 400px) {
+  h3 {
+    font-size: 1.5rem;
+  }
+  .timer, .message {
+    font-size: 1rem;
+  }
+  .heart {
+    font-size: 2rem;
+  }
+  img {
+    width: 55%;
+    max-width: 200px;
+  }
+}

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nosso Amor</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+  <div id="telaInicial">
+    <div id="btnAbrir" title="Clique para entrar">❤️</div>
+    <p>Clique no coração para começar</p>
+  </div>
+
+  <div id="telaPrincipal">
+    <div class="foto-container">
+      <div class="nome-casal">❤️ Lavinia & Pedro ❤️</div>
+      <img id="fotoCasal" src="foto_1.png" alt="Foto do casal" />
+    </div>
+
+    <h3>Juntos a:</h3>
+    <div class="timer" id="tempo-juntos">Calculando...</div>
+    <h4>E contando...😉</h4>
+    <div class="heart">❤️</div>
+    <hr/>
+
+    <div class="message">
+      Tudo começou na escola, você lembra?! Na nossa traca de olhares, eu comecei a te amar antes mesmo de te conhecer... <br />
+      Sempre amei o seu lindo sorriso e seu jeito encantador.
+      Você apareceu e me mostrou o lado mais lindo da vida.<br />
+      E então, no dia 04/07/2019, no meio do dia maravilhoso contigo, eu tomei a melhor decisão da minha vida, com a pergunta.<br />
+      <strong>Quer namorar comigo?</strong><br />
+      <strong>TE AMO ❤️</strong>
+    </div>
+    <div class="coracoes-container"></div>
+  </div>
+
+  <script>
+    document.getElementById('btnAbrir').addEventListener('click', () => {
+      document.getElementById('telaInicial').style.display = 'none';
+      document.getElementById('telaPrincipal').style.display = 'flex';
+
+      setInterval(criarCoracao, 600);
+      setInterval(trocarImagem, 3000);
+      setInterval(atualizaContador, 1000);
+      atualizaContador();
+    });
+
+    const inicio = new Date('2019-07-04T00:00:00');
+
+    function atualizaContador() {
+      const agora = new Date();
+      let diferenca = agora - inicio;
+
+      const segundos = Math.floor(diferenca / 1000);
+      const minutos = Math.floor(segundos / 60);
+      const horas = Math.floor(minutos / 60);
+      const dias = Math.floor(horas / 24);
+      const meses = Math.floor(dias / 30.4375);
+      const anos = Math.floor(meses / 12);
+
+      const diasRestantes = dias % 30.4375;
+      const mesesRestantes = meses % 12;
+      const horasRestantes = horas % 24;
+      const minutosRestantes = minutos % 60;
+      const segundosRestantes = segundos % 60;
+
+      document.getElementById('tempo-juntos').innerText =
+        `${anos} anos, ${mesesRestantes} meses, ${Math.floor(diasRestantes)} dias ` +
+        `${horasRestantes} horas, ${minutosRestantes} minutos e ${segundosRestantes} segundos`;
+    }
+
+    const imagens = ['foto_1.png', 'foto_2.png', 'foto_3.png'];
+    let index = 0;
+
+    function trocarImagem() {
+      index = (index + 1) % imagens.length;
+      document.getElementById('fotoCasal').src = imagens[index];
+    }
+
+    function criarCoracao() {
+      const coracao = document.createElement('div');
+      coracao.classList.add('coracao');
+      coracao.innerText = '❤️';
+
+      coracao.style.left = Math.random() * 100 + 'vw';
+      coracao.style.top = '100vh';
+
+      const tamanho = Math.random() * 1.5 + 1;
+      coracao.style.fontSize = `${tamanho}rem`;
+
+      document.querySelector('.coracoes-container').appendChild(coracao);
+
+      setTimeout(() => {
+        coracao.remove();
+      }, 4000);
+    }
+  </script>
+</body>
+</html>
